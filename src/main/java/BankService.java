@@ -23,7 +23,9 @@ public class BankService {
      * @param amount the amount to be deposited.
      */
     public void deposit(double amount){
-
+        balance = balance + amount;
+        System.out.println("Deposited: " + amount);
+        System.out.println("You have: " + balance);
     }
 
     /**
@@ -32,7 +34,14 @@ public class BankService {
      * @param amount the amount to be withdrawn.
      */
     public void withdraw(double amount){
-
+        double newBalance = balance - amount;
+        if (!(newBalance < 0)){
+            balance = newBalance;
+            System.out.println("Withdrew: " + amount);
+            System.out.println("You have: " + balance);
+        } else {
+            System.out.println("Cannot process request: Insufficient funds.");
+        }
     }
 
     /**
@@ -40,6 +49,6 @@ public class BankService {
      * @return the user's balance.
      */
     public double getBalance(){
-        return 0;
+        return balance;
     }
 }
